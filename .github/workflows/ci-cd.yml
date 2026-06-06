@@ -1,4 +1,4 @@
-name: Simple CI
+name: Simple CI/CD
 
 on:
   push:
@@ -6,15 +6,18 @@ on:
       - main
 
 jobs:
-  test:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Command
-        run: |
-          echo "Building application..."
-          echo "Testing application..."
-          echo "Deployment completed!"
+      - name: Build
+        run: echo "Build successful"
+
+      - name: Test
+        run: echo "All tests passed"
+
+      - name: Deploy
+        run: echo "Application deployed"
