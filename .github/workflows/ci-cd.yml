@@ -1,12 +1,20 @@
-name: My Pipeline
+name: Simple CI
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Message
-        run: echo "Hello, CI/CD!"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Command
+        run: |
+          echo "Building application..."
+          echo "Testing application..."
+          echo "Deployment completed!"
