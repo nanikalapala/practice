@@ -6,18 +6,21 @@ on:
       - main
 
 jobs:
-  pipeline:
+  build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Build
-        run: echo "Build successful"
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Test
-        run: echo "All tests passed"
-
-      - name: Deploy
-        run: echo "Application deployed"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
